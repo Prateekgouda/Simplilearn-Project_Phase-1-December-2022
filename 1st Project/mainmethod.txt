@@ -1,0 +1,93 @@
+package lockedme.com;
+import java.util.Scanner;
+
+public class Locker {
+public static void main(String[] args) {
+		
+		int ch=0, choice=0;
+		Scanner sc =new Scanner(System.in);
+		System.out.println("===================================================");
+		System.out.println("Welcome to Lockedme.com \n     Developed by:-Prateekgouda Patil");
+		System.out.println("===================================================");
+		System.out.println(" ");
+		
+		while(true)
+		{
+			System.out.println("Please enter your choice (1 or 2 or 3) ");
+			System.out.println("1) Retrieving the file names in an ascending order.");
+			System.out.println("2) Business-level Operations.");
+			System.out.println("3) Close The Application.");
+			try{    
+				ch = sc.nextInt();
+			}
+			catch(Exception e)  
+             {  
+              System.out.println("Null Exception occurred");  
+             }         
+			
+			switch(ch)
+			{
+			case 1: 
+				BusinessOperations.listFiles();
+				break;
+			case 2:
+				
+				    System.out.println("Business-level operations.");
+				    System.out.println("=============================");
+					System.out.println("Please enter your choice:");
+					System.out.println("1) Add a user specified file to the application.");
+					System.out.println("2) Delete a user specified file from the application.");
+					System.out.println("3) Search a user specified file from the application.");
+					System.out.println("4) Return to the main .");
+					
+					try{    
+						 choice = sc.nextInt();
+					}
+					catch(Exception e)  
+	                  {  
+	                   System.out.println("Null Exception occurred");  
+	                  }          
+					switch(choice)
+					{
+					case 1:
+						System.out.println("Enter the name(with extension) of a file to be created \n ");
+						String fileCreate = sc.next();
+						BusinessOperations.createFile(fileCreate);
+						break;
+						
+					case 2:						
+						System.out.print("Enter the name of a file to be deleted \n ");
+						String fileDelete = sc.next();
+						BusinessOperations.deleteFile(fileDelete);
+						break;
+					case 3:						
+						System.out.println("Enter the file name you want to search \n");
+						String fileSearch = sc.next();
+						BusinessOperations.searchFile(fileSearch);
+						break;
+						
+					case 4:
+						System.out.println("");
+						break;
+						
+				default:
+						System.out.println("\n You have entered the wrong choice, please enter the correct choice\n");
+						break;
+				}
+			
+					break;
+			case 3:
+				sc.close();
+				System.out.println("\n Thankyou for using 'LOCKEDME' Application");
+				System.exit(1);
+				break;
+			
+			default:
+				System.out.println("\n You have entered the wrong choice, please enter the correct choice 1 or 2 or 3\n");
+				break;
+			
+			}
+		}
+		
+	}
+}
